@@ -24,12 +24,29 @@ class MainViewModel: ViewModel() {
 
     fun addEntry() {
         chart?.data?.run {
+            val xRangeMaximum = 10f
+            val labelCount = if(entryCount > xRangeMaximum) {
+                xRangeMaximum.toInt()
+            }
+            else {
+                entryCount+1
+            }
+
+            val xAxis = chart!!.xAxis
+            xAxis.setLabelCount(labelCount, true)
+
+
             val entry = Entry(entryCount.toFloat(), Random.nextInt(35, 40).toFloat())
             addEntry(entry, 0)
             notifyDataChanged()
             chart!!.notifyDataSetChanged()
-            chart!!.setVisibleXRangeMaximum(10f)
+            chart!!.setVisibleXRangeMaximum(xRangeMaximum)
             chart!!.moveViewToX(entryCount.toFloat())
+            chart!!.invalidate()
+            val dataset = getDataSetByIndex(0)
+            dataset?.setDrawValues(true)
+            removeDataSet(0)
+            addDataSet(dataset)
         }
     }
 

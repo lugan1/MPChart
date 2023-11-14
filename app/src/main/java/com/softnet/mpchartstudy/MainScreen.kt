@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.softnet.mpchartstudy.chart.Chart
+import com.softnet.mpchartstudy.chart.DynamicChart
 
 @Composable
 fun MainScreen(
@@ -26,8 +27,10 @@ fun MainScreen(
             Text(text = "데이터 추가")
         }
 
-        Chart(
-            modifier = Modifier.fillMaxWidth().height(800.dp),
+        DynamicChart(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(800.dp),
             initialize = viewModel::initialize
         )
     }

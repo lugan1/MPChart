@@ -93,6 +93,7 @@ fun DynamicChart(
                 description.isEnabled = false
 
                 xAxis.position = XAxis.XAxisPosition.BOTTOM
+                //xAxis.setLabelCount(3, true)
 
                 axisRight.isEnabled = false
 
@@ -127,6 +128,9 @@ fun DynamicChart(
             }
             initialize(lineChart)
             lineChart
+        },
+        update = {
+            it.data.getDataSetByIndex(0).setDrawValues(true)
         }
     )
 }
