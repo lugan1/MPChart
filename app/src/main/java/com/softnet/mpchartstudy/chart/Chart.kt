@@ -122,6 +122,10 @@ fun DynamicChart(
                     mode = LineDataSet.Mode.HORIZONTAL_BEZIER
                 }
 
+                val markerView = CustomMarkerView(context)
+                markerView.chartView = this
+                marker = markerView
+
                 val lineData = LineData(dataSet)
                 lineData.setValueTextColor(Color.WHITE)
                 data = lineData
